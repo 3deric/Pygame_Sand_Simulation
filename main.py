@@ -54,7 +54,10 @@ def draw_world(screen: pygame.Surface, world: list, grid_width: int, grid_height
 def emit_points(world: list, emit: bool, pos: tuple, pixel_size: int, hue: float) -> list:
     # emission of particles at curser positiuon
     if emit:
-        world[int(pos[0] / pixel_size)][int(pos[1] / pixel_size)] = int(hue)
+        _pos_x = int(pos[0] / pixel_size)
+        _pos_y = int(pos[1] / pixel_size)
+        if world[_pos_x][_pos_y] == 0:
+            world[_pos_x][_pos_y] = int(hue)
     return world
 
 def setup_pygame(size: tuple, caption: str) -> tuple:
